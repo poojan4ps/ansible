@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: "update ubuntu package and install apache"
+      apt:
+        name: apache2
+        state: present
+        update_cache: true
+    - name: create content
+      copy:
+        content: "hello world"
+        dest: /var/www/html/index.html
+
